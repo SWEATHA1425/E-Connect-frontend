@@ -10,14 +10,12 @@
 
 import localstorageEncrypt from "localstorage-encrypt";
 import axios from "axios";
-var ip = import.meta.env.VITE_BACKEND_HOST 
-var host = import.meta.env.VITE_BACKEND_PORT 
 
-//export const ipadr=import.meta.env.VITE_HOST_IP;
-export const ipadr = import.meta.env.VITE_HOST_IP;
-console.log(import.meta.env.VITE_HOST_IP); // Debugging step
-console.log("j",import.meta.env.VITE_BACKEND_HOST)
-console.log("a",import.meta.env.VITE_BACKEND_PORT)
+// Use a single environment variable for the full backend URL
+export const ipadr = import.meta.env.VITE_BACKEND_URL || 'https://e-connect-backend-2l74.onrender.com';
+
+console.log("Backend URL:", ipadr);
+
 export const LS = {
   save: (key, value) => localStorage.setItem(key, JSON.stringify(value)),
   get: (key) => {
@@ -32,6 +30,6 @@ export const LS = {
 };
 
 export const Baseaxios = axios.create({
-  baseURL: `${ip}:${host}/`,
+  baseURL: `${ipadr}/`,
   headers: { Authorization: `Bearer ${LS.get("access_token")}` },
 });
