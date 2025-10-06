@@ -229,7 +229,7 @@ export default function LoginPage() {
               Sign in with Google
             </h2>
             <div className="flex justify-center">
-              <GoogleOAuthProvider clientId="34401210977-cvn09uafi0cn0pcd7lv9u4t0anjeg8qb.apps.googleusercontent.com">
+              <GoogleOAuthProvider clientId="883508437996-0s4hakmhun5ejdtt9ahitverl8eubost.apps.googleusercontent.com">
                 <GoogleLogin onSuccess={handleGoogleLogin} useOneTap />
               </GoogleOAuthProvider>
             </div>
