@@ -10,14 +10,14 @@ import {
   FileClock,
   FileCheck,
   FileUp,
-   Clock, 
+  Clock, 
    
 } from "lucide-react";
 import { toast, Toaster } from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import axios from "axios";
-import { LS } from "../Utils/Resuse";
+import { ipadr, LS } from "../Utils/Resuse";
 import Fileuploader from "./Fileuploader"; // <-- import the modal uploader
 
 export default function EmployeeDashboard() {
@@ -33,7 +33,8 @@ export default function EmployeeDashboard() {
   const location = useLocation();
   const { docName } = location.state || {}; 
   
-  
+    const API_BASE_URL = `${ipadr}`;
+
 
 
   const pageSize = 5;
@@ -44,7 +45,7 @@ export default function EmployeeDashboard() {
     setLoading(true);
     try {
       const res = await axios.get(
-        `http://localhost:8000/documents/assigned/${encodeURIComponent(userid)}`
+        `${API_BASE_URL}/documents/assigned/${encodeURIComponent(userid)}`
       );
 
       const docsArray = Array.isArray(res.data.assigned_docs)
@@ -136,7 +137,7 @@ export default function EmployeeDashboard() {
     return (
       <div className="flex items-center gap-3 text-sm">
         <a
-          href={`http://localhost:8000${doc.fileUrl}`}
+          href={`${API_BASE_URL}${doc.fileUrl}`}
           target="_blank"
           rel="noreferrer"
           className="flex items-center gap-1 text-blue-600 hover:underline"
@@ -148,7 +149,7 @@ export default function EmployeeDashboard() {
           onClick={async () => {
             try {
               await axios.delete(
-                `http://localhost:8000/documents/delete/${doc.fileId}`
+                `${API_BASE_URL}/documents/delete/${doc.fileId}`
               );
               setAssignedDocs((prev) =>
                 prev.map((d) =>
