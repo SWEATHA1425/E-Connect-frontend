@@ -21,7 +21,7 @@ export default function HRDocsReview() {
   const fetchUsers = async () => {
     try {
       setLoadingUsers(true);
-      const res = await axios.get("http://localhost:8000/get_all_users");
+      const res = await axios.get(`${API_BASE_URL}/get_all_users`);
       const normalizedUsers = res.data.map((u) => ({
         ...u,
         userId: u.id || u._id || u.userid,
@@ -37,7 +37,7 @@ export default function HRDocsReview() {
 
   const fetchAssignedDocs = async (userId) => {
     try {
-      const res = await axios.get(`http://localhost:8000/documents/assigned/${userId}`);
+      const res = await axios.get(`${API_BASE_URL}/documents/assigned/${userId}`);
       setAssignedDocs((prev) => ({ ...prev, [userId]: res.data }));
     } catch (err) {
       console.error(`❌ Error fetching docs for user ${userId}:`, err);
@@ -69,7 +69,7 @@ export default function HRDocsReview() {
         return updated;
       });
 
-      await axios.post("http://localhost:8000/assign_docs", {
+      await axios.post(`${API_BASE_URL}/assign_docs`, {
         userIds: selectedUsers,
         docName: docNameTrimmed,
       });
@@ -87,7 +87,7 @@ export default function HRDocsReview() {
 
   const handleVerify = async (userId, docName) => {
     try {
-      await axios.put("http://localhost:8000/review_document", {
+      await axios.put(`${API_BASE_URL}/review_document`, {
         userId,
         docName,
         status: "verified",
@@ -103,7 +103,7 @@ export default function HRDocsReview() {
   const handleDelete = async (userId, docName) => {
     try {
       if (!window.confirm(`Are you sure to delete "${docName}"?`)) return;
-      await axios.delete("http://localhost:8000/assigned_doc_delete", {
+      await axios.delete(`${API_BASE_URL}/assigned_doc_delete`, {
         data: { userId, docName },
       });
       setAssignedDocs((prev) => ({

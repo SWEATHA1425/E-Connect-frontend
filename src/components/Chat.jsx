@@ -13,6 +13,7 @@ import clsx from "clsx";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Picker from "emoji-picker-react";
+import { LS, ipadr } from "../Utils/Resuse";
 
 const formatTime = (isoString, withDate = false) => {
   if (!isoString) return "";
@@ -45,7 +46,8 @@ export default function Chat() {
 
   const chatEndRef = useRef(null);
   const textareaRef = useRef(null);
-  const ws = useRef(null);
+  const ws = useRef(null); 
+  const API_BASE_URL = `${ipadr}`;
 
   const buildChatId = (a, b) => [a, b].sort().join("_");
 
@@ -58,7 +60,7 @@ export default function Chat() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await fetch("http://localhost:8000/get_all_users");
+        const res = await fetch(`${API_BASE_URL}/get_all_users`);
         const data = await res.json();
         const filtered = data.filter((user) => {
           if (user.id === userid) return false;
@@ -78,7 +80,7 @@ export default function Chat() {
   useEffect(() => {
     const fetchGroups = async () => {
       try {
-        const res = await fetch(`http://localhost:8000/get_user_groups/${userid}`);
+        const res = await fetch(`${API_BASE_URL}/get_user_groups/${userid}`);
         const data = await res.json();
         setGroups(data);
       } catch (err) {
@@ -98,8 +100,8 @@ export default function Chat() {
     ws.current?.close();
     const url =
       chatType === "group"
-        ? `ws://127.0.0.1:8000/ws/group/${chatId}`
-        : `ws://127.0.0.1:8000/ws/${userid}`;
+        ? `${API_BASE_URL}/ws/group/${chatId}`
+        : `${API_BASE_URL}/ws/${userid}`;
     ws.current = new WebSocket(url);
 
     ws.current.onopen = () => setIsConnected(true);
@@ -160,7 +162,7 @@ export default function Chat() {
 
   const handleContactClick = async (contact) => {
     try {
-      const res = await fetch(`http://localhost:8000/get_EmployeeId/${encodeURIComponent(contact.name)}`);
+      const res = await fetch(`${API_BASE_URL}/get_EmployeeId/${encodeURIComponent(contact.name)}`);
       const data = await res.json();
       const employeeId = data.Employee_ID || data.employee_id || data.EmployeeId;
       if (!employeeId) return toast.error(`Failed to get employee ID for ${contact.name}`);
@@ -170,7 +172,7 @@ export default function Chat() {
       setUnread((prev) => ({ ...prev, [chatId]: 0 }));
       openWebSocket("user");
 
-      const historyRes = await fetch(`http://localhost:8000/history/${chatId}`);
+      const historyRes = await fetch(`${API_BASE_URL}/history/${chatId}`);
       if (historyRes.ok) {
         const history = await historyRes.json();
         setMessages((prev) => ({ ...prev, [chatId]: history }));
@@ -187,7 +189,7 @@ export default function Chat() {
     openWebSocket("group", group._id);
 
     try {
-      const res = await fetch(`http://localhost:8000/group_history/${group._id}`);
+      const res = await fetch(`${API_BASE_URL}/group_history/${group._id}`);
       if (res.ok) {
         const history = await res.json();
         setMessages((prev) => ({ ...prev, [group._id]: history }));
@@ -200,7 +202,7 @@ export default function Chat() {
   const handleRemoveGroup = async (group) => {
     if (!confirm(`Are you sure you want to delete group "${group.name}"?`)) return;
     try {
-      const res = await fetch(`http://localhost:8000/delete_group/${group._id}`, { method: "DELETE" });
+      const res = await fetch(`${API_BASE_URL}/delete_group/${group._id}`, { method: "DELETE" });
       if (res.ok) {
         setGroups((prev) => prev.filter((g) => g._id !== group._id));
         toast.success("Group deleted successfully");
@@ -292,7 +294,7 @@ export default function Chat() {
     ws.current.send(JSON.stringify(payload));
 
     try {
-      await fetch("http://localhost:8000/thread", {
+      await fetch("${API_BASE_URL}/thread", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
