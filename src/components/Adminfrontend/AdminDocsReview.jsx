@@ -37,6 +37,7 @@ export default function HRDocsReview() {
 
   const fetchAssignedDocs = async (userId) => {
     try {
+      
       const res = await axios.get(`${API_BASE_URL}/documents/assigned/${userId}`);
       setAssignedDocs((prev) => ({ ...prev, [userId]: res.data }));
     } catch (err) {
