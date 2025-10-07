@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 import { Check, FileText, X, User, PlusCircle, Upload, CheckCircle, Clock } from "lucide-react";
 import axios from "axios";
+import { ipadr } from "../../Utils/Resuse";
+
 
 export default function HRDocsReview() {
   const [users, setUsers] = useState([]);
@@ -13,7 +15,7 @@ export default function HRDocsReview() {
   const [loadingAssign, setLoadingAssign] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("all"); // "all", "pending", "uploaded", "verified"
-
+  const API_BASE_URL = `${ipadr}`;
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -37,7 +39,7 @@ export default function HRDocsReview() {
 
   const fetchAssignedDocs = async (userId) => {
     try {
-      
+
       const res = await axios.get(`${API_BASE_URL}/documents/assigned/${userId}`);
       setAssignedDocs((prev) => ({ ...prev, [userId]: res.data }));
     } catch (err) {
