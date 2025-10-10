@@ -356,19 +356,11 @@ const NotificationDashboard = () => {
               targetUrl = isAdminLevel ? '/admin/viewtask' : '/User/viewtask';
             } else {
               // For other task notifications, navigate to main task page
-<<<<<<< HEAD
               targetUrl = isAdminLevel ? '/admin/task' : '/user/todo';
             }
           } else {
             // Fallback to main task page
             targetUrl = isAdminLevel ? '/admin/task' : '/user/todo';
-=======
-              targetUrl = isAdminLevel ? '/admin/task' : '/User/task';
-            }
-          } else {
-            // Fallback to main task page
-            targetUrl = isAdminLevel ? '/admin/task' : '/User/task';
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
           }
           break;
 
@@ -480,11 +472,7 @@ const NotificationDashboard = () => {
               } else if (actionUrl.includes('wfh')) {
                 actionUrl = '/User/Remote_details';
               } else if (actionUrl.includes('task') || actionUrl.includes('Task')) {
-<<<<<<< HEAD
                 actionUrl = '/User/todo';
-=======
-                actionUrl = '/User/task';
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
               }
             } else if (actionUrl.startsWith('/HR/') && isAdminLevel) {
               // Map old HR URLs to admin equivalents
@@ -508,32 +496,18 @@ const NotificationDashboard = () => {
       // Navigate to the determined URL
       if (targetUrl) {
         console.log(`Navigating to: ${targetUrl} for notification type: ${notification.type} (HR: ${isHR}, Admin: ${isAdmin})`);
-<<<<<<< HEAD
         if (loadingToast !== undefined) toast.dismiss(loadingToast);
         toast.success('Opening page...');
         navigate(targetUrl);
       } else {
         if (loadingToast !== undefined) toast.dismiss(loadingToast);
-=======
-        toast.dismiss(loadingToast);
-        toast.success('Opening page...');
-        navigate(targetUrl);
-      } else {
-        toast.dismiss(loadingToast);
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
         console.warn('No target URL determined for notification:', notification);
         toast.error('Unable to navigate to the requested page');
       }
     } catch (error) {
-<<<<<<< HEAD
   if (loadingToast !== undefined) toast.dismiss(loadingToast);
   console.error('Error handling notification click:', error);
   toast.error('Error opening notification');
-=======
-      toast.dismiss(loadingToast);
-      console.error('Error handling notification click:', error);
-      toast.error('Error opening notification');
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
     }
   };
 
@@ -694,17 +668,12 @@ const NotificationDashboard = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
-<<<<<<< HEAD
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-300"></div>
-=======
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
       </div>
     );
   }
 
   return (
-<<<<<<< HEAD
     <div className="h-screen flex flex-col bg-white overflow-hidden">
       {/* Fixed Header Section */}
       <div className="flex-shrink-0">
@@ -794,98 +763,11 @@ const NotificationDashboard = () => {
                   <option value="overdue">Overdue Tasks</option>
                 </select>
               </div>
-=======
-    <div className="h-screen flex flex-col bg-gradient-to-br from-gray-50 via-gray-100 to-[#6d9eeb]/10 overflow-hidden">
-      <div className="flex-shrink-0 p-6">
-        {/* WebSocket Test Component */}
-        <WebSocketTest />
-        
-        {/* Header */}
-        <div className="glass-effect bg-white/95 rounded-xl shadow-lg p-6 mb-4 border border-white/20 notification-enter">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center">
-              <div className="bg-[#6d9eeb] p-3 rounded-full mr-4">
-                <FaBell className="text-white text-xl" />
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold text-gray-800">E-Connect Notifications</h1>
-                <div className="flex items-center space-x-2">
-                  <p className="text-gray-600">Stay updated with all your activities</p>
-                  <div className="flex items-center space-x-1">
-                    {isConnected ? (
-                      <FaWifi className="text-green-500 text-sm" title="Real-time connected" />
-                    ) : (
-                      <FaTimesCircle className="text-orange-500 text-sm" title="Polling mode" />
-                    )}
-                    <span className="text-xs text-gray-500">
-                      {isConnected ? 'Live' : 'Polling'}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <div className="bg-[#6d9eeb]/20 text-[#6d9eeb] px-4 py-2 rounded-full font-semibold border border-[#6d9eeb]/30">
-                {unreadCount} unread
-              </div>
-              <button
-                onClick={markAllAsRead}
-                className="bg-[#6d9eeb] text-white px-6 py-2 rounded-lg hover:bg-[#5a8bd9] transition-all duration-200 shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
-                disabled={unreadCount === 0}
-              >
-                Mark All Read
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Filters */}
-        <div className="glass-effect bg-white/95 rounded-xl shadow-lg p-4 mb-4 border border-white/20 notification-enter" style={{animationDelay: '0.1s'}}>
-          <div className="flex items-center space-x-4">
-            <FaFilter className="text-[#6d9eeb]" />
-            <div className="flex space-x-4">
-              <select
-                value={filter.type}
-                onChange={(e) => handleFilterChange('type', e.target.value)}
-                className="border border-[#6d9eeb]/30 rounded-lg px-4 py-2 bg-white focus:border-[#6d9eeb] focus:ring-2 focus:ring-[#6d9eeb]/20 outline-none transition-all duration-200"
-              >
-                <option value="all">All Types</option>
-                <option value="task">Tasks</option>
-                <option value="leave">Leave</option>
-                <option value="wfh">Work from Home</option>
-                <option value="system">System</option>
-                <option value="attendance">Attendance</option>
-              </select>
-
-              <select
-                value={filter.priority}
-                onChange={(e) => handleFilterChange('priority', e.target.value)}
-                className="border border-[#6d9eeb]/30 rounded-lg px-4 py-2 bg-white focus:border-[#6d9eeb] focus:ring-2 focus:ring-[#6d9eeb]/20 outline-none transition-all duration-200"
-              >
-                <option value="all">All Priorities</option>
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-                <option value="urgent">Urgent</option>
-              </select>
-
-              <select
-                value={filter.status}
-                onChange={(e) => handleFilterChange('status', e.target.value)}
-                className="border border-[#6d9eeb]/30 rounded-lg px-4 py-2 bg-white focus:border-[#6d9eeb] focus:ring-2 focus:ring-[#6d9eeb]/20 outline-none transition-all duration-200"
-              >
-                <option value="all">All Status</option>
-                <option value="unread">Unread</option>
-                <option value="read">Read</option>
-                <option value="overdue">🚨 Overdue Tasks</option>
-              </select>
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
             </div>
           </div>
         </div>
       </div>
 
-<<<<<<< HEAD
       {/* Scrollable Notifications List - Hidden Scrollbar */}
       <div className="flex-1 overflow-hidden">
         <div 
@@ -909,18 +791,6 @@ const NotificationDashboard = () => {
               </div>
               <h3 className="text-lg font-semibold text-gray-800 mb-2">No notifications found</h3>
               <p className="text-gray-600">You're all caught up! Check back later for updates.</p>
-=======
-      {/* Notifications List - Scrollable Area */}
-      <div className="flex-1 px-6 pb-6 overflow-hidden">
-        <div className="h-full overflow-y-auto scrollbar-thin space-y-3">
-          {filteredNotifications.length === 0 ? (
-            <div className="glass-effect bg-white/95 rounded-xl shadow-lg p-8 text-center border border-white/20 notification-enter">
-              <div className="bg-[#6d9eeb]/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FaInfoCircle className="text-[#6d9eeb] text-2xl" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-700 mb-2">No notifications found</h3>
-              <p className="text-gray-500">You're all caught up! Check back later for updates.</p>
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
             </div>
           ) : (
             filteredNotifications.map((notification, index) => {
@@ -928,7 +798,6 @@ const NotificationDashboard = () => {
               return (
               <div
                 key={notification._id}
-<<<<<<< HEAD
                 className={`transition-all duration-200 shadow-md ${
                   isOverdue ? 'bg-red-50 border-l-red-500 border border-red-200' :
                   !notification.is_read 
@@ -939,32 +808,12 @@ const NotificationDashboard = () => {
                 } ${
                   notification.action_url || notification.type ? 'relative' : ''
                 }`}
-=======
-                className={`notification-card-hover glass-effect notification-enter transition-all duration-200 ${
-                  !notification.is_read ? 'unread-highlight' : ''
-                } ${
-                  isOverdue ? 'bg-red-50 border-l-red-500 border-red-200' :
-                  !notification.is_read 
-                    ? 'bg-white/95 border-l-[#6d9eeb] bg-[#6d9eeb]/5 shadow-lg shadow-[#6d9eeb]/20 ring-2 ring-[#6d9eeb]/20' 
-                    : 'bg-white/95 border-l-gray-300 border border-white/20'
-                } rounded-xl shadow-md p-4 border-l-4 ${
-                  notification.action_url || notification.type ? 'cursor-pointer hover:scale-[1.01] hover:shadow-lg' : 'cursor-default'
-                } ${
-                  notification.action_url || notification.type ? 'relative overflow-hidden' : ''
-                }`}
-                style={{animationDelay: `${index * 0.05}s`}}
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
                 onClick={() => handleNotificationClick(notification)}
               >
                 {/* Clickable indicator */}
                 {(notification.action_url || notification.type) && (
-<<<<<<< HEAD
                   <div className="absolute top-3 right-3 opacity-40 hover:opacity-100 transition-opacity duration-200">
                     <div className="bg-blue-400 text-white p-1 rounded-full text-xs">
-=======
-                  <div className="absolute top-2 right-2 opacity-30 group-hover:opacity-100 transition-opacity duration-200">
-                    <div className="bg-[#6d9eeb] text-white p-1 rounded-full text-xs">
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
                       <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                       </svg>
@@ -973,20 +822,13 @@ const NotificationDashboard = () => {
                 )}
                 <div className="flex items-start justify-between">
                   <div className="flex items-start space-x-3 flex-1">
-<<<<<<< HEAD
                     <div className={`mt-1 p-2 rounded-lg flex-shrink-0 ${
                       isOverdue ? 'bg-red-100' :
                       !notification.is_read ? 'bg-blue-50' : 'bg-gray-100'
-=======
-                    <div className={`mt-1 p-2 rounded-lg ${
-                      isOverdue ? 'bg-red-100' :
-                      !notification.is_read ? 'bg-[#6d9eeb]/20' : 'bg-gray-100'
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
                     }`}>
                       {getTypeIcon(notification)}
                     </div>
                     
-<<<<<<< HEAD
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-2 mb-1">
                         <h3 className={`font-semibold text-sm md:text-base ${
@@ -996,23 +838,11 @@ const NotificationDashboard = () => {
                           {notification.title}
                         </h3>
                         <span className={`px-2 py-1 text-xs rounded-md font-medium border ${
-=======
-                    <div className="flex-1">
-                      <div className="flex items-center space-x-2 mb-1">
-                        <h3 className={`font-medium ${
-                          isOverdue ? 'text-red-700 font-bold' :
-                          !notification.is_read ? 'text-gray-900 font-bold' : 'text-gray-700'
-                        }`}>
-                          {notification.title}
-                        </h3>
-                        <span className={`priority-badge px-3 py-1 text-xs rounded-full font-medium border ${
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
                           isOverdue ? 'bg-red-100 text-red-800 border-red-200' : getOverduePriorityColors(notification.priority, isOverdue)
                         }`}>
                           {isOverdue ? 'URGENT' : notification.priority}
                         </span>
                         {!notification.is_read && (
-<<<<<<< HEAD
                           <div className="flex items-center gap-1">
                             <div className={`w-2 h-2 rounded-full ${
                               isOverdue ? 'bg-red-500' : 'bg-blue-400'
@@ -1020,63 +850,32 @@ const NotificationDashboard = () => {
                             <span className={`text-xs font-semibold ${
                               isOverdue ? 'text-red-600' : 'text-blue-500'
                             }`}>NEW</span>
-=======
-                          <div className="flex items-center space-x-1">
-                            <div className={`w-3 h-3 rounded-full unread-pulse ${
-                              isOverdue ? 'bg-red-500' : 'bg-[#6d9eeb]'
-                            }`}></div>
-                            <span className={`text-xs font-bold uppercase tracking-wide ${
-                              isOverdue ? 'text-red-600' : 'text-[#6d9eeb]'
-                            }`}>UNREAD</span>
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
                           </div>
                         )}
                       </div>
                       
-<<<<<<< HEAD
                       <p className={`text-sm mb-2 leading-relaxed ${
                         isOverdue ? 'text-red-700 font-medium' :
                         !notification.is_read ? 'text-gray-800' : 'text-gray-600'
-=======
-                      <p className={`text-sm mb-3 leading-relaxed ${
-                        isOverdue ? 'text-red-700 font-medium' :
-                        !notification.is_read ? 'text-gray-800 font-medium' : 'text-gray-600'
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
                       }`}>
                         {notification.message}
                       </p>
                       
-<<<<<<< HEAD
                       <div className="flex flex-wrap items-center justify-between gap-2 mt-3">
                         <span className="text-xs text-gray-600 bg-gray-100 px-3 py-1 rounded-md">
                           {formatDate(notification.created_at)}
                         </span>
                         
                         <div className="flex gap-2">
-=======
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
-                          {formatDate(notification.created_at)}
-                        </span>
-                        
-                        <div className="flex space-x-2">
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
                           <button
                             onClick={(e) => {
                               e.stopPropagation();
                               markAsRead(notification._id, notification.is_read);
                             }}
-<<<<<<< HEAD
                             className={`p-2 rounded-lg transition-colors duration-200 ${
                               notification.is_read 
                                 ? 'text-gray-500 hover:bg-gray-100 border border-gray-300' 
                                 : 'text-blue-500 hover:bg-blue-50 bg-blue-50 border border-blue-200'
-=======
-                            className={`p-2 rounded-lg transition-all duration-200 ${
-                              notification.is_read 
-                                ? 'text-gray-500 hover:bg-gray-100' 
-                                : 'text-[#6d9eeb] hover:bg-[#6d9eeb]/10 bg-[#6d9eeb]/5'
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
                             }`}
                             title={notification.is_read ? 'Mark as unread' : 'Mark as read'}
                           >
@@ -1088,11 +887,7 @@ const NotificationDashboard = () => {
                               e.stopPropagation();
                               deleteNotification(notification._id);
                             }}
-<<<<<<< HEAD
                             className="p-2 rounded-lg transition-colors duration-200 text-red-600 hover:bg-red-50 border border-red-200"
-=======
-                            className="p-2 rounded-lg transition-all duration-200 text-red-500 hover:bg-red-50"
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
                             title="Delete notification"
                           >
                             <FaTrash size={14} />
@@ -1106,10 +901,7 @@ const NotificationDashboard = () => {
             );
             })
           )}
-<<<<<<< HEAD
           </div>
-=======
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
         </div>
       </div>
     </div>

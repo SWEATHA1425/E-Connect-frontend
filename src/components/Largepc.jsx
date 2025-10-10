@@ -2,11 +2,7 @@ import { useState } from "react";
 import bot1 from "../assets/login.gif.gif";
 import { Toaster } from "react-hot-toast";
 import "react-toastify/dist/ReactToastify.css";
-<<<<<<< HEAD
 import { toast } from "react-toastify"
-=======
-import { ToastContainer, toast } from "react-toastify"
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
 import { Apisignin, Apisignup } from "../Api/Loginauth";
 import { useNavigate } from "react-router-dom";
 import { Authdata } from "../Utils/Authprovider";
@@ -90,11 +86,7 @@ function Largepc({ log }) {
               <p className='mb-3 mt-4 font-poppins text-base text-center text-zinc-300 '>Use your Google account to continue with RBG EConnect!</p>
             </div>
             <div className="flex justify-center">
-<<<<<<< HEAD
               <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
-=======
-              <GoogleOAuthProvider clientId="333036008565-7qkpcqr080na6l9fpcn492kc00ea2bv1.apps.googleusercontent.com">
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
                 <GoogleLogin
                   className="w-full h-full"
                   onSuccess={handleGoogleLogin}
@@ -106,20 +98,6 @@ function Largepc({ log }) {
           </div>
         )}
       </div>
-<<<<<<< HEAD
-=======
-      <ToastContainer
-        position="bottom-center"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
       {/* <Toaster position="bottom-center" reverseOrder={false} /> */}
     </div>
   );

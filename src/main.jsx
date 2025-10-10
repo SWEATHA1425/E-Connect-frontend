@@ -410,7 +410,6 @@ import Leavemanagement from "./components/Adminfrontend/Leavemanagement";
 import Leaveapproval from "./components/Adminfrontend/Leave_approval";
 import Wfh from "./components/Adminfrontend/Wfh_approval";
 import AdminProfile from "./components/Adminfrontend/Adminprofile";
-import Leavehistory from "./components/Adminfrontend/Leave_History";
 import AddUser from "./components/Adminfrontend/new_employee";
 import EmployeeDetails from "./components/EmployeeDetails";
 import ViewAssignedTask from "./components/ViewAssignedTask";
