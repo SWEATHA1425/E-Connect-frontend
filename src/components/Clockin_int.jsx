@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useLocation, Link, Outlet, useNavigate } from "react-router-dom";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import { FaClock, FaPlay, FaStop, FaSpinner, FaCheckCircle } from "react-icons/fa";
+<<<<<<< HEAD
 import { toast } from "react-toastify";
+=======
+import { ToastContainer, toast } from "react-toastify";
+>>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
 import "react-toastify/dist/ReactToastify.css";
 import { Baseaxios, LS } from "../Utils/Resuse";
 
@@ -128,10 +132,17 @@ function Clockin_int() {
     Baseaxios.post("/Clockin", { userid, name: userName, time: time })
       .then((response) => {
         setIsLoading(false);
+<<<<<<< HEAD
         console.log("Clock-in successful:", response.data);
         toggleTimer();
         
         toast.success(`Successfully clocked in at ${formatTime(currentDate)}! Time tracking started.`);
+=======
+        console.log("✅ Clock-in successful:", response.data);
+        toggleTimer();
+        
+        toast.success(`🎉 Successfully clocked in at ${formatTime(currentDate)}! Time tracking started.`);
+>>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
       })
       .catch((err) => {
         setIsLoading(false);
@@ -203,16 +214,27 @@ function Clockin_int() {
               <div className="flex space-x-3">
                 <button
                   onClick={hideConfirmationDialog}
+<<<<<<< HEAD
                   className="flex-1 px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors"
+=======
+                  className="flex-1 px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400 transition-colors"
+>>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
                 >
                   Cancel
                 </button>
                 <button
                   onClick={executeAction}
+<<<<<<< HEAD
                   className={`flex-1 px-4 py-2 rounded-md transition-colors font-semibold ${
                     confirmationAction === 'clockin' 
                       ? 'bg-green-100 text-green-700 hover:bg-green-200 border border-green-300' 
                       : 'bg-red-100 text-red-700 hover:bg-red-200 border border-red-300'
+=======
+                  className={`flex-1 px-4 py-2 text-white rounded-md transition-colors ${
+                    confirmationAction === 'clockin' 
+                      ? 'bg-green-500 hover:bg-green-600' 
+                      : 'bg-red-500 hover:bg-red-600'
+>>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
                   }`}
                 >
                   Confirm
@@ -251,6 +273,7 @@ function Clockin_int() {
             )}
           </div>
         </div>
+<<<<<<< HEAD
 
         {/* Productivity Dashboard Header */}
         {!showBackButton && (
@@ -279,6 +302,22 @@ function Clockin_int() {
 
         <Outlet />
       </div>
+=======
+        <Outlet />
+      </div>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+>>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
     </div>
   );
 }

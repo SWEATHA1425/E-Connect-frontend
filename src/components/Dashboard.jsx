@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { Baseaxios, LS ,ipadr} from "../Utils/Resuse";
+<<<<<<< HEAD
 import { format } from "date-fns";
+=======
+>>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
 
 export default function Clockdashboard() {
   const [attendanceData, setAttendanceData] = useState([]);
@@ -26,6 +29,7 @@ export default function Clockdashboard() {
     fetchData();
   }, []);
 
+<<<<<<< HEAD
   const formatDate = (dateString) => {
     if (!dateString) return 'N/A';
     try {
@@ -48,6 +52,8 @@ export default function Clockdashboard() {
     }
   };
 
+=======
+>>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
   return (
     <div className="rounded-md  w-full px-[7rem]">
       <div className="w-full h-full bg-whte shadow-lg rounded-sm border border-gray-200">
@@ -95,6 +101,7 @@ export default function Clockdashboard() {
                 {attendanceData.map((row, index) => (
                   <tr key={index}>
                     <td className="p-2 whitespace-nowrap">
+<<<<<<< HEAD
                       <div className="text-center">{formatDate(row.date)}</div>
                     </td>
                     <td className="p-2 whitespace-nowrap">
@@ -102,6 +109,15 @@ export default function Clockdashboard() {
                     </td>
                     <td className="p-2 whitespace-nowrap">
                       <div className="text-center">{formatTime(row.clockout)}</div>
+=======
+                      <div className="text-center">{row.date}</div>
+                    </td>
+                    <td className="p-2 whitespace-nowrap">
+                      <div className="text-center">{row.clockin}</div>
+                    </td>
+                    <td className="p-2 whitespace-nowrap">
+                      <div className="text-center">{row.clockout}</div>
+>>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
                     </td>
                     <td className="p-2 whitespace-nowrap">
                       <div className="text-center">{row.total_hours_worked}</div>

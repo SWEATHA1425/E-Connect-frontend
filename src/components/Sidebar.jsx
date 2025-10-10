@@ -1,7 +1,11 @@
 import Headlogo from "../assets/rbg2.png";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+<<<<<<< HEAD
 import { toast } from "react-toastify";
+=======
+import { ToastContainer, toast } from "react-toastify";
+>>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
 import "react-toastify/dist/ReactToastify.css";
 import { FiLogOut, FiUser } from "react-icons/fi";
 import { LS } from "../Utils/Resuse";
@@ -175,7 +179,11 @@ const Sidebar = ({ userPicture, userName, isLoggedIn, onLogout = () => {} }) => 
                   stroke="currentColor"
                   className="w-6 h-6 mr-3 text-white"
                 >
+<<<<<<< HEAD
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+=======
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-5 5v-5zM20.61 10.83l-1.44-1.44a3 3 0 00-4.24 0l-5 5-1.39-1.39a1 1 0 00-1.42 0l-4.24 4.24a1 1 0 000 1.42l1.44 1.44a1 1 0 001.42 0L9 16.83l1.39 1.39a3 3 0 004.24 0l5-5a1 1 0 000-1.39z" />
+>>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
                 </svg>
                 <span className="font-medium">Notifications</span>
               </div>
@@ -187,6 +195,7 @@ const Sidebar = ({ userPicture, userName, isLoggedIn, onLogout = () => {} }) => 
                 <svg xmlns="http://www.w3.org/2000/svg" 
                   fill="none" 
                   viewBox="0 0 24 24" 
+<<<<<<< HEAD
                   strokeWidth="1.5" 
                   stroke="currentColor" 
                   className="size-6 mr-3"
@@ -194,6 +203,16 @@ const Sidebar = ({ userPicture, userName, isLoggedIn, onLogout = () => {} }) => 
                 <path 
                   strokeLinecap="round" 
                   strokeLinejoin="round" 
+=======
+                  stroke-width="1.5" 
+                  stroke="currentColor" 
+                  class="size-6"
+                  className="size-6 mr-3"
+                  >
+                <path 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+>>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
                   d="M6.75 2.994v2.25m10.5-2.25v2.25m-14.252 13.5V7.491a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v11.251m-18 0a2.25 2.25 0 0 0 2.25 2.25h13.5a2.25 2.25 0 0 0 2.25-2.25m-18 0v-7.5a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v7.5m-6.75-6h2.25m-9 2.25h4.5m.002-2.25h.005v.006H12v-.006Zm-.001 4.5h.006v.006h-.006v-.005Zm-2.25.001h.005v.006H9.75v-.006Zm-2.25 0h.005v.005h-.006v-.005Zm6.75-2.247h.005v.005h-.005v-.005Zm0 2.247h.006v.006h-.006v-.006Zm2.25-2.248h.006V15H16.5v-.005Z" />
               </svg>
 
@@ -282,7 +301,11 @@ const Sidebar = ({ userPicture, userName, isLoggedIn, onLogout = () => {} }) => 
                   stroke="currentColor"
                   className="w-6 h-6 mr-3 text-white"
                 >
+<<<<<<< HEAD
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+=======
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-5 5v-5zM20.61 10.83l-1.44-1.44a3 3 0 00-4.24 0l-5 5-1.39-1.39a1 1 0 00-1.42 0l-4.24 4.24a1 1 0 000 1.42l1.44 1.44a1 1 0 001.42 0L9 16.83l1.39 1.39a3 3 0 004.24 0l5-5a1 1 0 000-1.39z" />
+>>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
                 </svg>
                 <span className="font-medium">Notifications</span>
               </div>
@@ -469,6 +492,11 @@ const Sidebar = ({ userPicture, userName, isLoggedIn, onLogout = () => {} }) => 
         onConfirm={handleLogoutConfirm}
         message="Are you sure you want to logout?"
       />
+<<<<<<< HEAD
+=======
+
+      <ToastContainer position="top-right" autoClose={1000} hideProgressBar theme="light" />
+>>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
     </div>
   );
 };

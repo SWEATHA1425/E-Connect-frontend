@@ -44,6 +44,7 @@
   }
 }
 
+<<<<<<< HEAD
 @keyframes slideInRight {
   from {
     opacity: 0;
@@ -66,6 +67,8 @@
   }
 }
 
+=======
+>>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
 @keyframes fadeInScale {
   from {
     opacity: 0;
@@ -95,6 +98,7 @@
   }
 }
 
+<<<<<<< HEAD
 @keyframes bounceIn {
   0% {
     opacity: 0;
@@ -112,10 +116,13 @@
   }
 }
 
+=======
+>>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
 .notification-enter {
   animation: slideInUp 0.4s ease-out;
 }
 
+<<<<<<< HEAD
 .animate-slide-in-right {
   animation: slideInRight 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
@@ -128,6 +135,8 @@
   animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
+=======
+>>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
 .notification-card-hover {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }

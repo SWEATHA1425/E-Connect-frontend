@@ -9,6 +9,10 @@ const NotificationBell = ({ className = "" }) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const userid = LS.get('userid');
+<<<<<<< HEAD
+=======
+  const Admin = LS.get("isadmin");
+>>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
   
   // Use WebSocket hook for real-time updates
   const { unreadCount: wsUnreadCount, isConnected } = useNotificationWebSocket();
@@ -34,10 +38,17 @@ const NotificationBell = ({ className = "" }) => {
 
   // Handle bell click
   const handleBellClick = () => {
+<<<<<<< HEAD
     const isAdmin = LS.get('isadmin');
     if (isAdmin) {
       navigate('/admin/notifications');
     } else {
+=======
+    if(Admin){
+      navigate('/admin/notifications')
+    }
+    else{
+>>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
       navigate('/User/notifications');
     }
   };

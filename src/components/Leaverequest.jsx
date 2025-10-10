@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
 import { toast } from "react-toastify";
+=======
+import { ToastContainer, toast } from "react-toastify";
+>>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
 import "react-toastify/dist/ReactToastify.css";
 import { Baseaxios, LS } from "../Utils/Resuse";
 import moment from 'moment';
@@ -600,6 +604,20 @@ const isWeekday = (date) => {
           </div>
         </div>
       </div>
+<<<<<<< HEAD
+=======
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+>>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
     </div>
   );
 };

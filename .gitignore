@@ -24,8 +24,12 @@ dist-ssr
 *.sw?
 __pycache__/
 *.pyc
+<<<<<<< HEAD
 appenv/
  
 # Environment and test files
 .env*
 test-results/
+=======
+appenv/
+>>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
