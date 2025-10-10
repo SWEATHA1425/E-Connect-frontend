@@ -353,7 +353,6 @@ const Timemanagement = () => {
     return `${year}-${month}-${day}`;
   };
 
-<<<<<<< HEAD
   const formatTime = (timeString) => {
     if (!timeString) return 'N/A';
     try {
@@ -368,8 +367,6 @@ const Timemanagement = () => {
     }
   };
 
-=======
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
@@ -477,17 +474,10 @@ const Timemanagement = () => {
                           <div className="font-medium text-center">{row.name}</div>
                         </td>
                         <td scope="col" className="p-2 whitespace-nowrap">
-<<<<<<< HEAD
                           <div className="font-medium text-center">{formatTime(row.clockin)}</div>
                         </td>
                         <td scope="col" className="p-2 whitespace-nowrap">
                           <div className="font-medium text-center">{formatTime(row.clockout)}</div>
-=======
-                          <div className="font-medium text-center">{row.clockin}</div>
-                        </td>
-                        <td scope="col" className="p-2 whitespace-nowrap">
-                          <div className="font-medium text-center">{row.clockout}</div>
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
                         </td>
                         <td scope="col" className="p-2 whitespace-nowrap">
                           <div className="font-medium text-center">{row.total_hours_worked}</div>

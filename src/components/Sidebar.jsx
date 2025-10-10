@@ -12,22 +12,54 @@ const Modal = ({ show, onClose, onConfirm, message }) => {
   if (!show) return null;
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50 ">
-      <div className="bg-blue-100 p-4 rounded-lg">
-        <p className="mb-3 text-black font-poppins">{message}</p>
-        <hr className="border-gray-400" />
-        <div className="flex flex-row">
+    <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50 backdrop-blur-sm">
+      <div className="bg-white rounded-xl shadow-2xl max-w-md w-full mx-4 overflow-hidden transform transition-all">
+        {/* Header */}
+        <div className="bg-blue-600 px-6 py-4 text-center">
+          <h3 className="text-xl font-semibold text-white font-poppins">
+            Confirm Logout
+          </h3>
+        </div>
+        
+        {/* Content */}
+        <div className="px-6 py-6">
+          <div className="flex items-center justify-center space-x-4">
+            <div className="flex-shrink-0">
+              <svg
+                className="w-12 h-12 text-blue-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                />
+              </svg>
+            </div>
+            <div>
+              <p className="text-gray-700 text-base font-poppins leading-relaxed">
+                {message}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer with buttons */}
+        <div className="bg-gray-50 px-6 py-4 flex gap-3 justify-center">
           <button
-            className="bg-red-400 hover:bg-red-500 text-white w-1/2 px-4 py-2 mt-4 rounded mr-2 font-poppins"
-            onClick={onConfirm}
-          >
-            Yes
-          </button>
-          <button
-            className="bg-gray-300 hover:bg-gray-400 text-black w-1/2 px-4 py-2 mt-4 rounded font-poppins"
+            className="px-6 py-2.5 rounded-lg font-medium font-poppins transition-all duration-200 bg-gray-200 hover:bg-gray-300 text-gray-700 hover:shadow-md"
             onClick={onClose}
           >
             Cancel
+          </button>
+          <button
+            className="px-6 py-2.5 rounded-lg font-medium font-poppins transition-all duration-200 bg-blue-600 hover:bg-blue-700 text-white hover:shadow-lg"
+            onClick={onConfirm}
+          >
+            Yes, Logout
           </button>
         </div>
       </div>
@@ -40,7 +72,8 @@ const Sidebar = ({ userPicture, userName, isLoggedIn, onLogout = () => {} }) => 
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   const handleLogoutConfirm = () => {
-    // Clear all localStorage data
+    setShowLogoutModal(false);
+    
     LS.remove("isloggedin");
     LS.remove("access_token");
     LS.remove("userid");
@@ -49,18 +82,19 @@ const Sidebar = ({ userPicture, userName, isLoggedIn, onLogout = () => {} }) => 
     LS.remove("position");
     LS.remove("department");
     
+    if (onLogout && typeof onLogout === 'function') {
+      onLogout();
+    }
+    
     toast.success("Successfully logged out!", {
       position: "top-right",
-      autoClose: 1000,
-      onClose: () => {
-        navigate("/"); // Redirect after logout
-        setShowLogoutModal(false);
-        if (onLogout && typeof onLogout === 'function') {
-          onLogout();
-        }
-      },
+      autoClose: 2000,
     });
-  };
+    
+    setTimeout(() => {
+      navigate("/", { replace: true });
+    }, 0);
+  }; 
 
   const handleLogoutCancel = () => {
     setShowLogoutModal(false);

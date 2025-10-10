@@ -584,10 +584,6 @@ const router = createBrowserRouter([
   element: <Wfh />,
 },
 {
-  path: "history",
-  element: <Leavehistory />,
-},
-{
   path: 'chat',
   element: <Chat />, // your Slack-like chat component
 },
@@ -670,10 +666,6 @@ const router = createBrowserRouter([
         element: <AdminProfile />,
       },
       {
-        path: "history",
-        element: <Leavehistory />,
-      },
-      {
         path: "newUser",
         element: <AddUser />,
       },
@@ -717,7 +709,6 @@ const router = createBrowserRouter([
       { path: "wfh", element: <Wfh /> },
       { path: "wfh_details", element: <RemoteDetails />},
       { path: "profile", element: <AdminProfile /> },
-      { path: "history", element: <Leavehistory /> },
       { path: "attendance", element: <Attendance />},
       { path: "newUser", element: <AddUser /> },
       { path: "addLeave", element: <AddLeave /> },

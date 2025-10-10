@@ -27,11 +27,24 @@ export default {
         color1: "#76ad5f",
         color2: "#8BB977",
         color3: "#6d9eeb",
-
+        
+        // Override blue with slate colors
+        // All bg-blue-* will now use slate colors
+        blue: {
+          50: '#f8fafc',   // slate-50
+          100: '#f1f5f9',  // slate-100
+          200: '#e2e8f0',  // slate-200
+          300: '#cbd5e1',  // slate-300
+          400: '#94a3b8',  // slate-400
+          500: '#64748b',  // slate-500
+          600: '#80A1BA',  // slate-600 (your sidebar bg)
+          700: '#668faeff',  // slate-700 (your hover state)
+          800: '#1e293b',  // slate-800
+          900: '#0f172a',  // slate-900
+          950: '#020617',  // slate-950
+        },
       },
     },
   },
   plugins: [],
 };
-
-
