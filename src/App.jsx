@@ -24,10 +24,6 @@ function App() {
       ) : (
         <div className="h-screen w-screen lg:block">
           <Loginpage />
-<<<<<<< HEAD
-=======
-          <Outlet />
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
         </div>
       )}
     </>
