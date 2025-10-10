@@ -123,7 +123,6 @@ export default function Clockdashboard() {
     return format(date, 'dd/MM/yyyy');
   };
 
-<<<<<<< HEAD
   const formatTime = (timeString) => {
     if (!timeString) return 'N/A';
     try {
@@ -138,8 +137,6 @@ export default function Clockdashboard() {
     }
   };
 
-=======
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
   
   const filteredAttendanceData = attendanceData.filter((row) => {
     const rowDate = startOfDay(new Date(row.date));
@@ -248,17 +245,10 @@ export default function Clockdashboard() {
                         <div className="text-center">{formatDate(row.date)}</div>
                       </td>
                       <td className="p-2 whitespace-nowrap">
-<<<<<<< HEAD
                         <div className="text-center">{formatTime(row.clockin)}</div>
                       </td>
                       <td className="p-2 whitespace-nowrap">
                         <div className="text-center">{formatTime(row.clockout)}</div>
-=======
-                        <div className="text-center">{row.clockin}</div>
-                      </td>
-                      <td className="p-2 whitespace-nowrap">
-                        <div className="text-center">{row.clockout}</div>
->>>>>>> 3650a4d1c71190f0215d3fef0e081c80a4dfc274
                       </td>
                       <td className="p-2 whitespace-nowrap">
                         <div className="text-center">{row.total_hours_worked}</div>
